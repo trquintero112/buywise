@@ -6,9 +6,9 @@
 <title>Buy Wise Long Island | Premier Car Broker</title>
 <style>
 
-        :root { --primary: #007bff; --dark: #121212; --light: #ffffff; }
+        :root { --primary: #007bff; --dark: #121212; --light: #ffffff; --gray: #f8f9fa; }
 
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
+        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
 
         .hero { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1500'); background-size: cover; background-position: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
 
@@ -26,9 +26,11 @@
 
         .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
 
-        .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; }
+        .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; transition: opacity 0.2s; }
 
-        /* Modal & Form */
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Modal Logic */
 
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
 
@@ -37,6 +39,12 @@
         .form-section { display: none; }
 
         .form-section.active { display: block; }
+
+        /* Success Message */
+
+        #result { display: none; text-align: center; padding: 20px; font-weight: bold; color: green; }
+
+        /* Inputs */
 
         .form-row { display: flex; gap: 15px; margin-top: 15px; }
 
@@ -76,14 +84,13 @@
 </div>
 <div id="contactModal" class="modal">
 <div class="modal-content">
-<form action="https://api.web3forms.com/submit" method="POST" id="mainForm">
-<input type="hidden" name="access_key" value="8397708d-7da2-4f39-9257-c27624ce441e">
-<input type="hidden" name="subject" value="New Inquiry from Buy Wise LI">
-<input type="hidden" name="from_name" value="Buy Wise Website">
+<form id="mainForm">
+<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+<input type="hidden" name="subject" value="New Inquiry - Buy Wise LI">
 <input type="hidden" id="selectedPricing" name="Pricing_Tier" value="">
+<div id="result">Inquiry Sent Successfully! We'll be in touch.</div>
 <div id="step1" class="form-section active">
-<h2 style="margin: 0;">Step 1: Contact Info</h2>
-<p style="color: #666; font-size: 0.9rem;">Tell us who you are and how to reach you.</p>
+<h2 style="margin: 0;">Contact Info</h2>
 <label>Full Name</label>
 <input type="text" name="name" required>
 <div class="form-row">
@@ -98,15 +105,15 @@
 </div>
 <label>Best Time to Contact</label>
 <select name="contact_time">
-<option value="Morning">Morning (9am - 12pm)</option>
-<option value="Afternoon">Afternoon (12pm - 5pm)</option>
-<option value="Evening">Evening (5pm - 8pm)</option>
+<option value="Morning">Morning</option>
+<option value="Afternoon">Afternoon</option>
+<option value="Evening">Evening</option>
 </select>
 <button type="button" class="btn" style="margin-top: 25px;" onclick="nextStep()">Next: Vehicle Details</button>
+<p style="text-align:center; font-size: 0.8rem; cursor:pointer; color: #999; margin-top: 15px;" onclick="closeModal()">Cancel</p>
 </div>
 <div id="step2" class="form-section">
-<h2 style="margin: 0;">Step 2: Vehicle Details</h2>
-<p style="color: #666; font-size: 0.9rem;">What car should we find for you?</p>
+<h2 style="margin: 0;">Vehicle Details</h2>
 <label>Desired Vehicle (Year/Make/Model)</label>
 <input type="text" name="desired_car" required>
 <div class="form-row">
@@ -119,7 +126,7 @@
 </select>
 </div>
 <div class="form-group">
-<label>Est. Annual Mileage</label>
+<label>Annual Mileage</label>
 <select name="mileage">
 <option value="7,500">7,500</option>
 <option value="10,000">10,000</option>
@@ -129,46 +136,35 @@
 </div>
 </div>
 <div class="form-row">
-<div class="form-group">
-<label>Target Monthly Payment</label>
-<input type="text" name="monthly_budget" placeholder="e.g. $600">
-</div>
-<div class="form-group">
-<label>Total Cash Down</label>
-<input type="text" name="cash_down" placeholder="e.g. $2,500">
-</div>
+<div class="form-group"><label>Monthly Target</label><input type="text" name="monthly"></div>
+<div class="form-group"><label>Cash Down</label><input type="text" name="cash"></div>
 </div>
 <label>Do you have a current vehicle?</label>
-<select name="has_current_car" id="hasCar" onchange="toggleCarSection()">
+<select name="has_car" id="hasCar" onchange="toggleCarSection()">
 <option value="No">No</option>
 <option value="Yes">Yes</option>
 </select>
 <div id="carSection" class="hidden-info">
-<label>Current Status</label>
-<select name="current_car_status">
-<option value="Leased">Active Lease</option>
-<option value="Financed">Financed (Loan)</option>
-<option value="Owned">Owned Outright</option>
-</select>
-<label>Trading in?</label>
-<select name="trade_intent" id="tradeIntent" onchange="toggleTradeSection()">
-<option value="No">No - Keeping it</option>
-<option value="Yes">Yes - Trade-in</option>
-</select>
-<div id="tradeDetails" class="hidden-info">
-<label>Balance Owed / Remaining Payments</label>
-<input type="text" name="financial_details">
+<label>Leased/Financed/Owned?</label>
+<input type="text" name="current_status">
+<label>Trading in? (Balance Owed/Months Left)</label>
+<input type="text" name="trade_details">
 </div>
-</div>
-<button type="submit" class="btn" style="margin-top: 25px;">Submit Interest</button>
-<button type="button" onclick="prevStep()" style="background:none; border:none; color:#999; width:100%; margin-top:10px; cursor:pointer;">Back to Contact Info</button>
+<button type="submit" id="submitBtn" class="btn" style="margin-top: 25px;">Submit Inquiry</button>
+<button type="button" onclick="prevStep()" style="background:none; border:none; color:#999; width:100%; margin-top:10px; cursor:pointer;">Back</button>
 </div>
 </form>
 </div>
 </div>
 <script>
 
+    const form = document.getElementById('mainForm');
+
+    const result = document.getElementById('result');
+
     const modal = document.getElementById("contactModal");
+
+    // Form Navigation
 
     function openModal(tier) { 
 
@@ -180,21 +176,9 @@
 
     function closeModal() { modal.style.display = "none"; }
 
-    function nextStep() {
+    function nextStep() { document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.add('active'); }
 
-        document.getElementById('step1').classList.remove('active');
-
-        document.getElementById('step2').classList.add('active');
-
-    }
-
-    function prevStep() {
-
-        document.getElementById('step2').classList.remove('active');
-
-        document.getElementById('step1').classList.add('active');
-
-    }
+    function prevStep() { document.getElementById('step2').classList.remove('active'); document.getElementById('step1').classList.add('active'); }
 
     function toggleCarSection() {
 
@@ -204,13 +188,75 @@
 
     }
 
-    function toggleTradeSection() {
+    // AJAX Form Submission
 
-        const val = document.getElementById('tradeIntent').value;
+    form.addEventListener('submit', function(e) {
 
-        document.getElementById('tradeDetails').style.display = (val === 'Yes') ? 'block' : 'none';
+        e.preventDefault();
 
-    }
+        const formData = new FormData(form);
+
+        const object = Object.fromEntries(formData);
+
+        const json = JSON.stringify(object);
+
+        const submitBtn = document.getElementById('submitBtn');
+
+        submitBtn.innerHTML = "Sending...";
+
+        submitBtn.disabled = true;
+
+        fetch('https://api.web3forms.com/submit', {
+
+            method: 'POST',
+
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+
+            body: json
+
+        })
+
+        .then(async (response) => {
+
+            if (response.status == 200) {
+
+                result.style.display = "block";
+
+                document.getElementById('step2').style.display = "none";
+
+                setTimeout(() => {
+
+                    form.reset();
+
+                    result.style.display = "none";
+
+                    document.getElementById('step1').classList.add('active');
+
+                    document.getElementById('step2').style.display = "";
+
+                    submitBtn.innerHTML = "Submit Inquiry";
+
+                    submitBtn.disabled = false;
+
+                    closeModal();
+
+                }, 3000); // Wait 3 seconds so they see the success message
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.log(error);
+
+            alert("Something went wrong. Please try again.");
+
+            submitBtn.disabled = false;
+
+        });
+
+    });
 </script>
 </body>
 </html>
