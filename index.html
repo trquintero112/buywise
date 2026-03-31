@@ -5,86 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Buy Wise Long Island | Premier Car Broker</title>
 <style>
-
-        :root { --primary: #007bff; --dark: #121212; --light: #ffffff; --gray: #f8f9fa; }
-
-        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
-
-        /* Hero Banner */
-
-        .hero { 
-
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
-
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1500'); 
-
-            background-size: cover;
-
-            background-position: center;
-
-            height: 300px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 0 20px;
-
-        }
-
-        .hero h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1px; text-transform: uppercase; font-weight: 800; }
-
-        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin-top: 10px; font-weight: 400; letter-spacing: 0.5px; line-height: 1.4; }
-
-        .sub-brand { font-size: 0.9rem; font-weight: 700; letter-spacing: 3px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
-
-        .container { max-width: 1000px; margin: auto; padding: 3rem 2rem; }
-
-        /* Pricing Cards */
-
-        .pricing { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
-
-        .card { background: white; border-radius: 16px; width: 280px; text-align: center; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s ease; }
-
-        .card:hover { transform: translateY(-10px); }
-
-        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; color: var(--dark); }
-
-        .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; }
-
-        /* Modal */
-
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
-
-        .modal-content { background: white; margin: 2% auto; padding: 35px; border-radius: 20px; width: 90%; max-width: 550px; position: relative; }
-
-        .form-section { display: none; }
-
-        .form-section.active { display: block; }
-
-        /* Form Layout */
-
-        .form-row { display: flex; gap: 15px; margin-top: 15px; }
-
-        .form-group { flex: 1; }
-
-        label { display: block; margin-top: 15px; font-weight: 600; font-size: 0.85rem; color: #555; }
-
-        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 0.95rem; }
-
-        .hidden-section { display: none; background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; border-left: 4px solid var(--primary); }
-
-        /* Success Message Overlay */
-
-        #success-msg { display: none; text-align: center; padding: 20px; font-weight: bold; color: #28a745; font-size: 1.2rem; }
+       :root { --primary: #007bff; --dark: #121212; --light: #ffffff; }
+       body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
+       .hero { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1500'); background-size: cover; background-position: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
+       .hero h1 { font-size: 2.8rem; margin: 0; text-transform: uppercase; font-weight: 800; }
+       .sub-brand { font-size: 0.9rem; font-weight: 700; letter-spacing: 3px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
+       .container { max-width: 1000px; margin: auto; padding: 3rem 2rem; }
+       .pricing { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+       .card { background: white; border-radius: 16px; width: 280px; text-align: center; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s ease; }
+       .card:hover { transform: translateY(-10px); }
+       .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+       .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; transition: opacity 0.3s; }
+       .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+       /* Modal & Form */
+       .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
+       .modal-content { background: white; margin: 2% auto; padding: 35px; border-radius: 20px; width: 90%; max-width: 550px; position: relative; }
+       .form-section { display: none; }
+       .form-section.active { display: block; }
+       .form-row { display: flex; gap: 15px; margin-top: 15px; }
+       .form-group { flex: 1; }
+       label { display: block; margin-top: 15px; font-weight: 600; font-size: 0.85rem; color: #555; }
+       input, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 0.95rem; }
+       .hidden-info { display: none; background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; border-left: 4px solid var(--primary); }
+       /* Success Message Overlay */
+       #success-msg { display: none; text-align: center; padding: 20px; }
+       #success-msg h2 { color: #28a745; margin-bottom: 10px; }
 </style>
 </head>
 <body>
@@ -96,7 +41,6 @@
 <div class="container">
 <div style="text-align:center;">
 <h2 style="font-size: 2.2rem; font-weight: 700;">Simple Flat-Fee Pricing</h2>
-<p style="color: #666;">Expert representation for one straightforward cost.</p>
 </div>
 <div class="pricing">
 <div class="card">
@@ -112,19 +56,21 @@
 <button class="btn" onclick="openModal('Luxury')">Get Started</button>
 </div>
 </div>
-<div style="text-align: center; margin-top: 50px;">
-<p>Questions? <a href="mailto:tim@buywise.com?subject=Contact%20Inquiry" style="color: var(--primary); text-decoration: none; font-weight: 700;">Contact us here</a></p>
-</div>
 </div>
 <div id="contactModal" class="modal">
 <div class="modal-content">
-<div id="success-msg">Inquiry Sent Successfully! We'll be in touch.</div>
-<form id="carForm">
+<div id="success-msg">
+<h2>Inquiry Sent!</h2>
+<p>We have received your details and will be in touch shortly.</p>
+</div>
+<form id="mainForm">
 <input type="hidden" name="access_key" value="8397708d-7da2-4f39-9257-c27624ce441e">
-<input type="hidden" name="subject" value="New Inquiry - Buy Wise LI">
+<input type="hidden" name="subject" value="New Inquiry from Buy Wise LI">
+<input type="hidden" name="from_name" value="Buy Wise Website">
 <input type="hidden" id="selectedPricing" name="Pricing_Tier" value="">
 <div id="step1" class="form-section active">
-<h2 style="margin: 0;">Contact Info</h2>
+<h2 style="margin: 0;">Step 1: Contact Info</h2>
+<p style="color: #666; font-size: 0.9rem;">Tell us who you are and how to reach you.</p>
 <label>Full Name</label>
 <input type="text" name="name" required>
 <div class="form-row">
@@ -139,15 +85,16 @@
 </div>
 <label>Best Time to Contact</label>
 <select name="contact_time">
-<option value="Morning">Morning</option>
-<option value="Afternoon">Afternoon</option>
-<option value="Evening">Evening</option>
+<option value="Morning">Morning (9am - 12pm)</option>
+<option value="Afternoon">Afternoon (12pm - 5pm)</option>
+<option value="Evening">Evening (5pm - 8pm)</option>
 </select>
 <button type="button" class="btn" style="margin-top: 25px;" onclick="nextStep()">Next: Vehicle Details</button>
 <p style="text-align:center; font-size: 0.8rem; cursor:pointer; color: #999; margin-top: 15px;" onclick="closeModal()">Cancel</p>
 </div>
 <div id="step2" class="form-section">
-<h2 style="margin: 0;">Vehicle Details</h2>
+<h2 style="margin: 0;">Step 2: Vehicle Details</h2>
+<p style="color: #666; font-size: 0.9rem;">What car should we find for you?</p>
 <label>Desired Vehicle (Year/Make/Model)</label>
 <input type="text" name="desired_car" required>
 <div class="form-row">
@@ -172,7 +119,7 @@
 <div class="form-row">
 <div class="form-group">
 <label>Target Monthly Payment</label>
-<input type="text" name="monthly_payment" placeholder="e.g. $600">
+<input type="text" name="monthly_budget" placeholder="e.g. $600">
 </div>
 <div class="form-group">
 <label>Total Cash Down</label>
@@ -180,13 +127,13 @@
 </div>
 </div>
 <label>Do you have a current vehicle?</label>
-<select name="has_car" id="hasCar" onchange="toggleCarSection()">
+<select name="has_current_car" id="hasCar" onchange="toggleCarSection()">
 <option value="No">No</option>
 <option value="Yes">Yes</option>
 </select>
-<div id="carSection" class="hidden-section">
+<div id="carSection" class="hidden-info">
 <label>Current Status</label>
-<select name="current_status">
+<select name="current_car_status">
 <option value="Leased">Active Lease</option>
 <option value="Financed">Financed (Loan)</option>
 <option value="Owned">Owned Outright</option>
@@ -194,127 +141,95 @@
 <label>Trading in?</label>
 <select name="trade_intent" id="tradeIntent" onchange="toggleTradeSection()">
 <option value="No">No - Keeping it</option>
-<option value="Yes">Yes - Trade-in requested</option>
+<option value="Yes">Yes - Trade-in</option>
 </select>
-<div id="tradeDetails" class="hidden-section">
+<div id="tradeDetails" class="hidden-info">
 <label>Balance Owed / Remaining Payments</label>
-<input type="text" name="financial_details" placeholder="Payoff amt or months left">
+<input type="text" name="financial_details">
 </div>
 </div>
 <button type="submit" id="submitBtn" class="btn" style="margin-top: 25px;">Submit Interest</button>
-<button type="button" onclick="prevStep()" style="background:none; border:none; color:#999; width:100%; margin-top:10px; cursor:pointer;">Back</button>
+<button type="button" onclick="prevStep()" style="background:none; border:none; color:#999; width:100%; margin-top:10px; cursor:pointer;">Back to Contact Info</button>
 </div>
 </form>
 </div>
 </div>
 <script>
-
-    const modal = document.getElementById("contactModal");
-
-    const carForm = document.getElementById("carForm");
-
-    const successMsg = document.getElementById("success-msg");
-
-    function openModal(tier) { 
-
-        document.getElementById('selectedPricing').value = tier;
-
-        modal.style.display = "block"; 
-
-    }
-
-    function closeModal() { modal.style.display = "none"; }
-
-    function nextStep() { document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.add('active'); }
-
-    function prevStep() { document.getElementById('step2').classList.remove('active'); document.getElementById('step1').classList.add('active'); }
-
-    function toggleCarSection() {
-
-        const val = document.getElementById('hasCar').value;
-
-        document.getElementById('carSection').style.display = (val === 'Yes') ? 'block' : 'none';
-
-    }
-
-    function toggleTradeSection() {
-
-        const val = document.getElementById('tradeIntent').value;
-
-        document.getElementById('tradeDetails').style.display = (val === 'Yes') ? 'block' : 'none';
-
-    }
-
-    // Silent Form Submission
-
-    carForm.addEventListener("submit", function(e) {
-
-        e.preventDefault();
-
-        const btn = document.getElementById("submitBtn");
-
-        btn.innerHTML = "Sending...";
-
-        btn.disabled = true;
-
-        const formData = new FormData(carForm);
-
-        const object = Object.fromEntries(formData);
-
-        const json = JSON.stringify(object);
-
-        fetch("https://api.web3forms.com/submit", {
-
-            method: "POST",
-
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-
-            body: json
-
-        })
-
-        .then(async (response) => {
-
-            if (response.status == 200) {
-
-                successMsg.style.display = "block";
-
-                document.getElementById("step2").style.display = "none";
-
-                setTimeout(() => {
-
-                    carForm.reset();
-
-                    successMsg.style.display = "none";
-
-                    document.getElementById("step1").classList.add("active");
-
-                    document.getElementById("step2").style.display = "";
-
-                    btn.innerHTML = "Submit Interest";
-
-                    btn.disabled = false;
-
-                    closeModal();
-
-                }, 3000);
-
-            }
-
-        })
-
-        .catch(error => {
-
-            alert("Something went wrong. Please check your connection.");
-
-            btn.innerHTML = "Submit Interest";
-
-            btn.disabled = false;
-
-        });
-
-    });
+   const modal = document.getElementById("contactModal");
+   const form = document.getElementById("mainForm");
+   const successMsg = document.getElementById("success-msg");
+   function openModal(tier) {
+       document.getElementById('selectedPricing').value = tier;
+       modal.style.display = "block";
+   }
+   function closeModal() {
+       modal.style.display = "none";
+       // Reset view for next time
+       successMsg.style.display = "none";
+       form.style.display = "block";
+       document.getElementById('step2').classList.remove('active');
+       document.getElementById('step1').classList.add('active');
+   }
+   function nextStep() {
+       document.getElementById('step1').classList.remove('active');
+       document.getElementById('step2').classList.add('active');
+   }
+   function prevStep() {
+       document.getElementById('step2').classList.remove('active');
+       document.getElementById('step1').classList.add('active');
+   }
+   function toggleCarSection() {
+       const val = document.getElementById('hasCar').value;
+       document.getElementById('carSection').style.display = (val === 'Yes') ? 'block' : 'none';
+   }
+   function toggleTradeSection() {
+       const val = document.getElementById('tradeIntent').value;
+       document.getElementById('tradeDetails').style.display = (val === 'Yes') ? 'block' : 'none';
+   }
+   // Silent Submission Logic
+   form.addEventListener("submit", function(e) {
+       e.preventDefault();
+       const btn = document.getElementById("submitBtn");
+       btn.disabled = true;
+       btn.innerHTML = "Sending...";
+       const formData = new FormData(form);
+       const object = Object.fromEntries(formData);
+       const json = JSON.stringify(object);
+       fetch("https://api.web3forms.com/submit", {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json",
+               "Accept": "application/json"
+           },
+           body: json
+       })
+       .then(async (response) => {
+           if (response.status == 200) {
+               // Show success, hide form
+               form.style.display = "none";
+               successMsg.style.display = "block";
+               // Clear the form data
+               form.reset();
+               toggleCarSection(); // Hide car section if it was open
+               // Close modal and return to home after 3 seconds
+               setTimeout(() => {
+                   closeModal();
+                   btn.disabled = false;
+                   btn.innerHTML = "Submit Interest";
+               }, 3000);
+           } else {
+               alert("Something went wrong. Please try again.");
+               btn.disabled = false;
+               btn.innerHTML = "Submit Interest";
+           }
+       })
+       .catch(error => {
+           console.log(error);
+           alert("Submission failed. Check your internet connection.");
+           btn.disabled = false;
+           btn.innerHTML = "Submit Interest";
+       });
+   });
 </script>
 </body>
 </html>
- 
