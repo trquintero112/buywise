@@ -10,13 +10,45 @@
 
         body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
 
-        .hero { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1500'); background-size: cover; background-position: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
+        /* Hero Banner */
 
-        .hero h1 { font-size: 2.8rem; margin: 0; text-transform: uppercase; font-weight: 800; }
+        .hero { 
+
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1500'); 
+
+            background-size: cover;
+
+            background-position: center;
+
+            height: 300px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 0 20px;
+
+        }
+
+        .hero h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1px; text-transform: uppercase; font-weight: 800; }
+
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin-top: 10px; font-weight: 400; letter-spacing: 0.5px; line-height: 1.4; }
 
         .sub-brand { font-size: 0.9rem; font-weight: 700; letter-spacing: 3px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
 
         .container { max-width: 1000px; margin: auto; padding: 3rem 2rem; }
+
+        /* Pricing Cards */
 
         .pricing { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 
@@ -24,13 +56,11 @@
 
         .card:hover { transform: translateY(-10px); }
 
-        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; color: var(--dark); }
 
-        .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; transition: opacity 0.2s; }
+        .btn { background: var(--primary); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block; cursor: pointer; border: none; font-size: 1rem; font-weight: 600; width: 100%; }
 
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        /* Modal Logic */
+        /* Modal */
 
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
 
@@ -40,11 +70,7 @@
 
         .form-section.active { display: block; }
 
-        /* Success Message */
-
-        #result { display: none; text-align: center; padding: 20px; font-weight: bold; color: green; }
-
-        /* Inputs */
+        /* Form Layout */
 
         .form-row { display: flex; gap: 15px; margin-top: 15px; }
 
@@ -52,9 +78,13 @@
 
         label { display: block; margin-top: 15px; font-weight: 600; font-size: 0.85rem; color: #555; }
 
-        input, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 0.95rem; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 0.95rem; }
 
-        .hidden-info { display: none; background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; border-left: 4px solid var(--primary); }
+        .hidden-section { display: none; background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; border-left: 4px solid var(--primary); }
+
+        /* Success Message Overlay */
+
+        #success-msg { display: none; text-align: center; padding: 20px; font-weight: bold; color: #28a745; font-size: 1.2rem; }
 </style>
 </head>
 <body>
@@ -66,6 +96,7 @@
 <div class="container">
 <div style="text-align:center;">
 <h2 style="font-size: 2.2rem; font-weight: 700;">Simple Flat-Fee Pricing</h2>
+<p style="color: #666;">Expert representation for one straightforward cost.</p>
 </div>
 <div class="pricing">
 <div class="card">
@@ -81,14 +112,17 @@
 <button class="btn" onclick="openModal('Luxury')">Get Started</button>
 </div>
 </div>
+<div style="text-align: center; margin-top: 50px;">
+<p>Questions? <a href="mailto:tim@buywise.com?subject=Contact%20Inquiry" style="color: var(--primary); text-decoration: none; font-weight: 700;">Contact us here</a></p>
+</div>
 </div>
 <div id="contactModal" class="modal">
 <div class="modal-content">
-<form id="mainForm">
-<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+<div id="success-msg">Inquiry Sent Successfully! We'll be in touch.</div>
+<form id="carForm">
+<input type="hidden" name="access_key" value="8397708d-7da2-4f39-9257-c27624ce441e">
 <input type="hidden" name="subject" value="New Inquiry - Buy Wise LI">
 <input type="hidden" id="selectedPricing" name="Pricing_Tier" value="">
-<div id="result">Inquiry Sent Successfully! We'll be in touch.</div>
 <div id="step1" class="form-section active">
 <h2 style="margin: 0;">Contact Info</h2>
 <label>Full Name</label>
@@ -126,7 +160,7 @@
 </select>
 </div>
 <div class="form-group">
-<label>Annual Mileage</label>
+<label>Est. Annual Mileage</label>
 <select name="mileage">
 <option value="7,500">7,500</option>
 <option value="10,000">10,000</option>
@@ -136,21 +170,38 @@
 </div>
 </div>
 <div class="form-row">
-<div class="form-group"><label>Monthly Target</label><input type="text" name="monthly"></div>
-<div class="form-group"><label>Cash Down</label><input type="text" name="cash"></div>
+<div class="form-group">
+<label>Target Monthly Payment</label>
+<input type="text" name="monthly_payment" placeholder="e.g. $600">
+</div>
+<div class="form-group">
+<label>Total Cash Down</label>
+<input type="text" name="cash_down" placeholder="e.g. $2,500">
+</div>
 </div>
 <label>Do you have a current vehicle?</label>
 <select name="has_car" id="hasCar" onchange="toggleCarSection()">
 <option value="No">No</option>
 <option value="Yes">Yes</option>
 </select>
-<div id="carSection" class="hidden-info">
-<label>Leased/Financed/Owned?</label>
-<input type="text" name="current_status">
-<label>Trading in? (Balance Owed/Months Left)</label>
-<input type="text" name="trade_details">
+<div id="carSection" class="hidden-section">
+<label>Current Status</label>
+<select name="current_status">
+<option value="Leased">Active Lease</option>
+<option value="Financed">Financed (Loan)</option>
+<option value="Owned">Owned Outright</option>
+</select>
+<label>Trading in?</label>
+<select name="trade_intent" id="tradeIntent" onchange="toggleTradeSection()">
+<option value="No">No - Keeping it</option>
+<option value="Yes">Yes - Trade-in requested</option>
+</select>
+<div id="tradeDetails" class="hidden-section">
+<label>Balance Owed / Remaining Payments</label>
+<input type="text" name="financial_details" placeholder="Payoff amt or months left">
 </div>
-<button type="submit" id="submitBtn" class="btn" style="margin-top: 25px;">Submit Inquiry</button>
+</div>
+<button type="submit" id="submitBtn" class="btn" style="margin-top: 25px;">Submit Interest</button>
 <button type="button" onclick="prevStep()" style="background:none; border:none; color:#999; width:100%; margin-top:10px; cursor:pointer;">Back</button>
 </div>
 </form>
@@ -158,13 +209,11 @@
 </div>
 <script>
 
-    const form = document.getElementById('mainForm');
-
-    const result = document.getElementById('result');
-
     const modal = document.getElementById("contactModal");
 
-    // Form Navigation
+    const carForm = document.getElementById("carForm");
+
+    const successMsg = document.getElementById("success-msg");
 
     function openModal(tier) { 
 
@@ -188,29 +237,37 @@
 
     }
 
-    // AJAX Form Submission
+    function toggleTradeSection() {
 
-    form.addEventListener('submit', function(e) {
+        const val = document.getElementById('tradeIntent').value;
+
+        document.getElementById('tradeDetails').style.display = (val === 'Yes') ? 'block' : 'none';
+
+    }
+
+    // Silent Form Submission
+
+    carForm.addEventListener("submit", function(e) {
 
         e.preventDefault();
 
-        const formData = new FormData(form);
+        const btn = document.getElementById("submitBtn");
+
+        btn.innerHTML = "Sending...";
+
+        btn.disabled = true;
+
+        const formData = new FormData(carForm);
 
         const object = Object.fromEntries(formData);
 
         const json = JSON.stringify(object);
 
-        const submitBtn = document.getElementById('submitBtn');
+        fetch("https://api.web3forms.com/submit", {
 
-        submitBtn.innerHTML = "Sending...";
+            method: "POST",
 
-        submitBtn.disabled = true;
-
-        fetch('https://api.web3forms.com/submit', {
-
-            method: 'POST',
-
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
 
             body: json
 
@@ -220,27 +277,27 @@
 
             if (response.status == 200) {
 
-                result.style.display = "block";
+                successMsg.style.display = "block";
 
-                document.getElementById('step2').style.display = "none";
+                document.getElementById("step2").style.display = "none";
 
                 setTimeout(() => {
 
-                    form.reset();
+                    carForm.reset();
 
-                    result.style.display = "none";
+                    successMsg.style.display = "none";
 
-                    document.getElementById('step1').classList.add('active');
+                    document.getElementById("step1").classList.add("active");
 
-                    document.getElementById('step2').style.display = "";
+                    document.getElementById("step2").style.display = "";
 
-                    submitBtn.innerHTML = "Submit Inquiry";
+                    btn.innerHTML = "Submit Interest";
 
-                    submitBtn.disabled = false;
+                    btn.disabled = false;
 
                     closeModal();
 
-                }, 3000); // Wait 3 seconds so they see the success message
+                }, 3000);
 
             }
 
@@ -248,11 +305,11 @@
 
         .catch(error => {
 
-            console.log(error);
+            alert("Something went wrong. Please check your connection.");
 
-            alert("Something went wrong. Please try again.");
+            btn.innerHTML = "Submit Interest";
 
-            submitBtn.disabled = false;
+            btn.disabled = false;
 
         });
 
